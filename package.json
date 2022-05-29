@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server.js",
    
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix userlogin npm run build --prefix userlogin",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix userlogin && npm run build --prefix userlogin",
     "start-dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
