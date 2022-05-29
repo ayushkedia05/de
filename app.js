@@ -8,20 +8,20 @@ const app=express();
 app.use(cors());
 
 
-// if(process.env.NODE_ENV==='production')
-// {
-//     app.use(express.static(path.join(__dirname,'userlogin/build')))
+if(process.env.NODE_ENV==='production')
+{
+    app.use(express.static(path.join(__dirname,'userlogin/build')))
     
     
-//     app.get('*',(req,res)=>{
-//         res.sendFile(path.join(__dirname,'userlogin','build','index.html'));
-//     })
+    app.get('*',(req,res)=>{
+        res.sendFile(path.join(__dirname,'userlogin','build','index.html'));
+    })
     
-// }else {
-//     app.get("/",(req,res)=>{
-//         res.send("APi running");
-//     })
-// }
+}else {
+    app.get("/",(req,res)=>{
+        res.send("APi running");
+    })
+}
 
 
 
