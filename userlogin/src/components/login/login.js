@@ -165,8 +165,9 @@ const dispatch=useDispatch();
         <Checkbox label="Keep me logged in" mt="xl" size="md" />
         <Button onClick={initiatelogin} fullWidth mt="xl" size="md">
           {<Link to="/product"></Link>}
+          login
         </Button>
-          <Link onClick={initiatelogin} to="/product">f</Link>
+          {/* <Link onClick={initiatelogin} to="/product">f</Link> */}
            
         <Text align="center" mt="md">
           Don&apos;t have an account?{' '}

@@ -5,6 +5,7 @@ import './register.css'
 import { Link } from 'react-router-dom';
 
 
+import { useHistory } from 'react-router-dom';
 
 import { uiActions } from '../../store/uislice';
 
@@ -12,6 +13,7 @@ import { useDispatch } from 'react-redux';
 
 const Register=()=>{
   const dispatch=useDispatch(); 
+  const history=useHistory();
   
   const [result,setresult]=useState('');
 
@@ -37,14 +39,21 @@ const registeruser=async(Event)=>{
 
       if(value.data.status==='success')
       {
+        alert("you registered successfully");
         dispatch(uiActions.toggle());
 
           setresult('success');
           <Link to="/welcome" weight={700} >
           Register
         </Link>
-      }
+             history.push('/welcome');
 
+      }
+      else
+      {
+      alert("Make sure email is right and password is min 8 length");
+   console.log("fbsjbfs");
+      }
       //  if(value.data.status==='success')
       //  console.log('fsfsfs');
 
@@ -71,7 +80,7 @@ const registeruser=async(Event)=>{
     <input type="text" placeholder="Enter Email" name="email" id="email" required/>
 
     <label htmlFor="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" id="psw" required/>
+    <input type="password" placeholder="Enter Password and length should be min 8" name="psw" id="psw" required/>
 
     <label htmlFor="psw-repeat"><b>Repeat Password</b></label>
     <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required/>
