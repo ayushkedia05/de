@@ -77,22 +77,10 @@ const dispatch=useDispatch();
 
 
 
-  const handleCredentialResponse = (response) => {
-   let responsePayload = decodeJwtResponse(response.credential);
-   console.log(response.credential);
-    console.log("ID: " + responsePayload.sub);
-    console.log('Full Name: ' + responsePayload.name);
-    console.log('Given Name: ' + responsePayload.given_name);
-    console.log('Family Name: ' + responsePayload.family_name);
-    console.log("Image URL: " + responsePayload.picture);
-    console.log("Email: " + responsePayload.email);
-  }
 
 
-  const showdata=(Event)=>{
-    console.log(Event);
-  }
 
+  
 
     const [username,setusername]=useState('');
     const [password,setpassword]=useState('');
@@ -135,29 +123,19 @@ const dispatch=useDispatch();
 
 
   const { classes } = useStyles();
+
+
+
   return (
     <div className={classes.wrapper}>
 
 {/* https://localhost:3001/welcome */}
+<Link to ="/auth/google">google</Link>
 
 
       <Paper className={classes.form} radius={0} p={30}>
         <Title order={4} className={classes.title} align="center" mt="ls" mb={40}>
-          {/* <GoogleLogin
-        clientId="344744223778-revniapmihkcd12svnl8d2gt0o4pcb1o.apps.googleusercontent.com"
-        buttonText="Login with google"
-        onSuccess={showdata}
-        onFailure={showdata}
-          ></GoogleLogin> */}
-
-<div id="g_id_onload"
-         data-client_id="344744223778-revniapmihkcd12svnl8d2gt0o4pcb1o.apps.googleusercontent.com"
-         data-callback="handleCredentialResponse">
-    </div>
-    <div className="g_id_signin" data-type="standard" onClick={initiatelogin}></div>
-
-
-          {/* <div className="g-signin2" data-onsuccess="onSignIn">fsfs</div> */}
+        
         </Title>
 <form onSubmit={initiatelogin}>
         <TextInput label="Email address" placeholder="hello@gmail.com" size="md" onChange={(userchange)=>{setusername(userchange.target.value)}}/>
