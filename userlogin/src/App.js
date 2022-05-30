@@ -45,6 +45,13 @@ return (
   <Route path="/">
     <HeaderSimple></HeaderSimple>
     </Route>
+    <Route
+            path="/auth/google"
+            component={() => {
+              window.location.replace('http://localhost:3000/auth/google');
+              return null;
+            }}
+          />
 
     <Route path="/welcome">
     <AuthenticationImage></AuthenticationImage>

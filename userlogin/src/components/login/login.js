@@ -130,7 +130,7 @@ const dispatch=useDispatch();
     <div className={classes.wrapper}>
 
 {/* https://localhost:3001/welcome */}
-<Link to ={{ pathname: "http://localhost:3000/auth/google" }}>google</Link>
+<Link to ={{ pathname: "/auth/google" }}>google</Link>
 
 
       <Paper className={classes.form} radius={0} p={30}>
