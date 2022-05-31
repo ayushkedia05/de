@@ -12,7 +12,7 @@ const TourCard=(props)=> {
     <div style={{ width: 400, margin: 'auto' }}>
       <Card shadow="sm" p="lg">
         <Card.Section>
-          <Image src="./image.png" height={160} alt="India " />
+          <Image src={props.photo} height={160} alt="India " />
         </Card.Section>
 
         <Group position="apart" style={{ marginBottom: 5, marginTop: theme.spacing.sm }}>

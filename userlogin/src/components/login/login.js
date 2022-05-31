@@ -5,7 +5,6 @@ import { GoogleLogin } from 'react-google-login';
 import { useHistory } from 'react-router-dom';
 
 
-
 import { uiActions } from '../../store/uislice';
 
 import { useDispatch } from 'react-redux';
@@ -65,17 +64,6 @@ const dispatch=useDispatch();
 
 
 
-  function decodeJwtResponse(token) {
-    let base64Url = token.split('.')[1]
-    let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    let jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-    return JSON.parse(jsonPayload)
-}
-
-
-
 
 
 
@@ -130,11 +118,17 @@ const dispatch=useDispatch();
     <div className={classes.wrapper}>
 
 {/* https://localhost:3001/welcome */}
-<Link to ={{ pathname: "/auth/google" }}>google</Link>
 
 
       <Paper className={classes.form} radius={0} p={30}>
         <Title order={4} className={classes.title} align="center" mt="ls" mb={40}>
+{/* <Link to ={{ pathname: "/auth/google" }}>google</Link> */}
+<div className="google-btn">
+  <div className="google-icon-wrapper">
+    <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+  </div>
+  <Link to={{ pathname: "/auth/google" }} className="btn-text"><b>Sign in with google</b></Link>
+</div>
         
         </Title>
 <form onSubmit={initiatelogin}>

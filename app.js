@@ -6,6 +6,8 @@ const cookieParser = require('cookie-parser');
 const path=require('path');
 const app=express();
 app.use(cors());
+const axios=require('axios')
+const User=require('./models/usermodel.js');
 
 
 const request=require('request');
@@ -16,7 +18,7 @@ const googleStrategy=require("passport-google-oauth20");
 
 const session = require('express-session');
 // After you declare "app"
-app.use(session({ secret: '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' }));
+app.use(session({ secret: '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hytfCbj' }));
 
 //     // request.post('http://localhost:3000/api/users/',newprofile);
 //   return done(null,profile);
@@ -56,38 +58,33 @@ passport.use(new googleStrategy({
     clientID:"104402507206-vhno2nhlnq3rur6df7dt5euke5f85cu7.apps.googleusercontent.com",
     clientSecret:"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",
     callbackURL:"http://localhost:3001/product",
-},(accessToken,refreshToken,profile,done)=>{
-    console.log(accessToken);
-    console.log(refreshToken);
-    console.log(profile.json)
+},async(accessToken,refreshToken,profile,done)=>{
+    // console.log(accessToken);
+    // console.log(refreshToken);
+    console.log(profile)
     const newprofile={
         name:profile.displayName,
         email:profile.emails[0].value,
+        password:profile.id,
+        passwordconfirm:profile.id,
         photo:profile.photos[0].value
     }
-    console.log(newprofile)
-    request.post('http://localhost:3000/api/users/',newprofile);
+    console.log(newprofile);
+    // console.log("fsfsfs");
+    // request.post('http://localhost:3000/api/users/signup',newprofile);
 
+    const getback=axios.post('http://localhost:3000/api/users/',newprofile);  
 
  done(null,{});
 }))
 
+app.get('/auth/google', passport.authenticate('google', {scope: ['profile','email']}));
 
-app.get('/auth/google', passport.authenticate('google', {scope: ['profile']}));
-
-
-
-
-  const clientid="104402507206-vhno2nhlnq3rur6df7dt5euke5f85cu7.apps.googleusercontent.com";
-  const clientsecret="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";
-
-
-  app.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/auth/fail'}),
-  (req, res, next) => {
-      console.log(req.user, req.isAuthenticated());
-      res.send('user is logged in');
-  })
-
+app.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/auth/fail'}),
+    (req, res, next) => {
+        console.log(req.user, req.isAuthenticated());
+        res.send('user is logged in');
+    })
 
 
 

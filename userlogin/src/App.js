@@ -66,7 +66,7 @@ return (
    
     <div className="productposters">
     {marketdata.map((product,int)=>(
-      <TourCard description={product.description} name={product.name} email={product.email} key={int}></TourCard>
+      <TourCard description={product.description} name={product.name} email={product.email} photo={product.photo} key={int}></TourCard>
 ))}
 </div>
 
