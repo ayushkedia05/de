@@ -93,7 +93,7 @@ app.get('/auth/google', passport.authenticate('google', {scope: ['profile','emai
 app.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/auth/fail'}),
     (req, res, next) => {
         console.log(req.user, req.isAuthenticated());
-        res.redirect('http://localhost:3001/product')
+        res.redirect('https://loginappdemoi.herokuapp.com/product')
     })
 
 
