@@ -76,7 +76,7 @@ passport.use(new googleStrategy({
 
 
 
-    axios.post(`http://localhost:3000/api/users/`, { newprofile })
+    axios.post(`https://loginappdemoi.herokuapp.com/api/users/`, { newprofile })
       .then(res => {
         console.log(res);
         console.log(res.data);
