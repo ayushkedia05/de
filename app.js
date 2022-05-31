@@ -57,7 +57,7 @@ passport.deserializeUser(function (obj, cb) {
 passport.use(new googleStrategy({
     clientID:"104402507206-vhno2nhlnq3rur6df7dt5euke5f85cu7.apps.googleusercontent.com",
     clientSecret:"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",
-    callbackURL:"http://localhost:3000/auth/google/callback",
+    callbackURL:"/auth/google/callback",
 },(accessToken,refreshToken,profile,done)=>{
     // console.log(accessToken);
     // console.log(refreshToken);
@@ -88,12 +88,12 @@ passport.use(new googleStrategy({
  done(null,{});
 }))
 
-app.get('https://loginappdemoi.herokuapp.com/auth/google', passport.authenticate('google', {scope: ['profile','email']}));
+app.get('/auth/google', passport.authenticate('google', {scope: ['profile','email']}));
 
 app.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/auth/fail'}),
     (req, res, next) => {
         console.log(req.user, req.isAuthenticated());
-        res.redirect('https://loginappdemoi.herokuapp.com/product')
+        res.redirect('/product')
     })
 
 
