@@ -72,8 +72,10 @@ passport.use(new googleStrategy({
     console.log(newprofile);
     // console.log("fsfsfs");
     // request.post('http://localhost:3000/api/users/signup',newprofile);
-
-    const getback=axios.post('http://localhost:3000/api/users/',newprofile);  
+try{
+    axios.post('http://localhost:3000/api/users/',newprofile)}catch(err){
+        console.log(err);
+    };      
 
  done(null,{});
 }))
