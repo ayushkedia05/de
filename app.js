@@ -57,7 +57,7 @@ passport.deserializeUser(function (obj, cb) {
 passport.use(new googleStrategy({
     clientID:"104402507206-vhno2nhlnq3rur6df7dt5euke5f85cu7.apps.googleusercontent.com",
     clientSecret:"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",
-    callbackURL:"http://localhost:3001/product",
+    callbackURL:"http://localhost:3000/auth/google/callback",
 },async(accessToken,refreshToken,profile,done)=>{
     // console.log(accessToken);
     // console.log(refreshToken);
@@ -83,7 +83,7 @@ app.get('/auth/google', passport.authenticate('google', {scope: ['profile','emai
 app.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/auth/fail'}),
     (req, res, next) => {
         console.log(req.user, req.isAuthenticated());
-        res.send('user is logged in');
+        res.redirect('http://localhost:3001/product')
     })
 
 
