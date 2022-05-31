@@ -58,7 +58,7 @@ passport.use(new googleStrategy({
     clientID:"104402507206-vhno2nhlnq3rur6df7dt5euke5f85cu7.apps.googleusercontent.com",
     clientSecret:"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",
     callbackURL:"http://localhost:3000/auth/google/callback",
-},async(accessToken,refreshToken,profile,done)=>{
+},(accessToken,refreshToken,profile,done)=>{
     // console.log(accessToken);
     // console.log(refreshToken);
     console.log(profile)
@@ -72,10 +72,18 @@ passport.use(new googleStrategy({
     console.log(newprofile);
     // console.log("fsfsfs");
     // request.post('http://localhost:3000/api/users/signup',newprofile);
-try{
-    axios.post('http://localhost:3000/api/users/',newprofile)}catch(err){
-        console.log(err);
-    };      
+    // const getback=await axios.post('http://localhost:3000/api/users/',newprofile)
+
+
+
+    axios.post(`http://localhost:3000/api/users/`, { newprofile })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      }).catch(function(err)
+      {
+       console.log("hbdjsf");
+      })
 
  done(null,{});
 }))
@@ -85,7 +93,7 @@ app.get('/auth/google', passport.authenticate('google', {scope: ['profile','emai
 app.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/auth/fail'}),
     (req, res, next) => {
         console.log(req.user, req.isAuthenticated());
-        res.redirect('/product')
+        res.redirect('http://localhost:3001/product')
     })
 
 
