@@ -21,7 +21,7 @@ function App() {
 // console.log(data);
 useEffect(()=>{
 const data = async ()=>{
-  const d = await axios.get ('https://loginappdemoi.herokuapp.com/api/users/');
+  const d = await axios.get ('http://localhost:3000/api/users/');
   // console.log(d.data.data.tours);
 
   console.log(d.data.data.alluser);
@@ -45,13 +45,13 @@ return (
   <Route path="/">
     <HeaderSimple></HeaderSimple>
     </Route>
-    {/* <Route
+    <Route
             path="/auth/google"
             component={() => {
               window.location.replace('http://localhost:3000/auth/google');
               return null;
             }}
-          /> */}
+          />
 
     <Route path="/welcome">
     <AuthenticationImage></AuthenticationImage>

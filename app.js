@@ -76,7 +76,7 @@ passport.use(new googleStrategy({
 
 
 
-    axios.post(`https://loginappdemoi.herokuapp.com/api/users`, { newprofile })
+    const getback=axios.post(`http://localhost:3000/api/users/`, newprofile )
       .then(res => {
         console.log(res);
         console.log(res.data);
@@ -93,7 +93,7 @@ app.get('/auth/google', passport.authenticate('google', {scope: ['profile','emai
 app.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/auth/fail'}),
     (req, res, next) => {
         console.log(req.user, req.isAuthenticated());
-        res.redirect('/product')
+        res.redirect('http://localhost:3001/product')
     })
 
 
