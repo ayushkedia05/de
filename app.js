@@ -88,7 +88,7 @@ passport.use(new googleStrategy({
  done(null,{});
 }))
 
-app.get('/auth/google', passport.authenticate('google', {scope: ['profile','email']}));
+app.get('https://loginappdemoi.herokuapp.com/auth/google', passport.authenticate('google', {scope: ['profile','email']}));
 
 app.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/auth/fail'}),
     (req, res, next) => {
