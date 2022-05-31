@@ -21,7 +21,7 @@ function App() {
 // console.log(data);
 useEffect(()=>{
 const data = async ()=>{
-  const d = await axios.get ('http://localhost:3000/api/users');
+  const d = await axios.get ('https://loginappdemoi.herokuapp.com/api/users/');
   // console.log(d.data.data.tours);
 
   console.log(d.data.data.alluser);
