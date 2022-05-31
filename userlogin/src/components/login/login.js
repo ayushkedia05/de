@@ -127,7 +127,7 @@ const dispatch=useDispatch();
   <div className="google-icon-wrapper">
     <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
   </div>
-  <Link to={{ pathname: "/auth/google" }} className="btn-text"><b>Sign in with google</b></Link>
+  <a href="/auth/google" className="btn-text"><b>Sign in with google</b></a>
 </div>
         
         </Title>
